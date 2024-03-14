@@ -1,0 +1,24 @@
+<div class="bg-black px-16 py-10 text-white space-y-8 h-full">
+  <a routerLink="/home"
+    ><img
+      src="https://cdn.pixabay.com/photo/2017/03/16/21/18/logo-2150297_640.png"
+      alt=""
+      class="h-16"
+  /></a>
+  <div class="space-y-3 flex flex-col justify-between h-[80%]">
+    <ul class="space-y-5">
+      <li *ngFor="let item of link">
+        <a [routerLink]="item.link" routerLinkActive="active">{{
+          item.label
+        }}</a>
+      </li>
+    </ul>
+    <ul class="space-y-5">
+      <li *ngFor="let item of link2">
+        <a [routerLink]="item.link" routerLinkActive="active">{{
+          item.label
+        }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
