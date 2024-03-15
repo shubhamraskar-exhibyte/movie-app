@@ -1,15 +1,14 @@
 <div class="py-6 sm:px-16 bg-cover bg-no-repeat w-full flex flex-col relative">
   <img
-    [src]="bgImage"
-    alt=""
-    class="absolute top-1/2 left-1/2 -z-20 -translate-x-1/2 -translate-y-1/2 h-full w-full object-cover object-center"
-    width=""
-  />
+      [src]="bgImage"
+      alt=""
+      class="absolute top-1/2 left-1/2 -z-20 -translate-x-1/2 -translate-y-1/2 h-full w-full object-cover object-center"
+    />
   <div
     class="absolute inset-0 bg-center -z-10 bg-gradient-to-tr from-zinc-900 to-transparent"
   ></div>
-  <div class="border-2 rounded-md border-black flex">
+  <div class="border-2 rounded-md border-black flex h-full overflow-auto">
     <app-sidebar></app-sidebar>
-    <div class="p-10 flex-1 text-white"><router-outlet></router-outlet></div>
+    <div class="md:p-10 p-2 flex-1 text-white overflow-auto"><router-outlet></router-outlet></div>
   </div>
 </div>

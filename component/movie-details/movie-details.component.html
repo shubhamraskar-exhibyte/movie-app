@@ -1,0 +1,47 @@
+<div class="">
+  <a class="md:text-lg text-md inline" routerLink="/">Home</a>
+  <div class="max-w-xl leading-loose md:space-y-4 space-y-1">
+    <div class="md:pt-28 md:pb-5 pt-11 pb-0">
+      <h1 class="md:text-6xl text-3xl font-bold uppercase">{{ movies.title }}</h1>
+    </div>
+    <p>
+      {{ movies.trailer.published | date : "yyyy" }}
+    </p>
+
+    <div class="md:pt-6 md:space-y-2 pt-2 space-y-1">
+      <div class="text-xl">4/10 stars rating</div>
+    </div>
+    <div class="flex space-x-3">
+      <button
+        class="border border-red-700 rounded-sm bg-red-700 md:px-4 px-2 md:py-2 py-1 text-sm hover:bg-transparent focus:outline-none uppercase"
+      >
+        Play now
+      </button>
+      <button
+        class="border border-gray-500 rounded-sm bg-gray-500 md:px-4 px-2 md:py-2 py-1 text-sm hover:bg-transparent focus:outline-none uppercase"
+      >
+        Trailer
+      </button>
+    </div>
+    
+  </div>
+  <div class="grid md:grid-cols-4 grid-cols-2 md:gap-4 gap-2 md:pb-4 md:pt-4 pb-2 pt-2">
+    <div
+      class="rounded-md space-y-2 bg-slate-950 overflow-hidden"
+      *ngFor="let item of movies.videos; index as i"
+      [ngClass]="{ active: selected == i }"
+      (click)="selected = i"
+    >
+      <img
+        [src]="item.thumbnail"
+        [alt]="item.title"
+        class="h-44 block object-cover object-center"
+      />
+      <div class="py-3 px-2 text-white">
+        <div class="flex justify-between items-center">
+          <div class="md:text-lg text-sm line-clamp-2">{{ item.title }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,49 +1,20 @@
-<div class="flex gap-5">
-  <div class="max-w-sm space-y-3 flex-1 cursor-pointer">
+<div class="grid sm:grid-cols-4 grid-cols-2 gap-3">
+  <div class="rounded-md space-y-2 bg-slate-950 overflow-hidden cursor-pointer" (click)="movieDetails(movies)">
     <img
-      src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
+      [src]="movies.trailer.youtube_thumbnail"
       alt=""
-      class="h-36 block object-cover object-center w-full"
+      class="h-44 block object-cover object-center"
     />
-    <div class="flex justify-between">
-      <div>Lorem, ipsum dolor.</div>
-      <div>2024</div>
-    </div>
-  </div>
-
-  <div class="max-w-sm space-y-4 flex-1 cursor-pointer">
-    <img
-      src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
-      alt=""
-      class="h-36 block object-cover object-center w-full"
-    />
-    <div class="flex justify-between">
-      <div>Lorem, ipsum dolor.</div>
-      <div>2024</div>
-    </div>
-  </div>
-
-  <div class="max-w-sm space-y-4 flex-1 cursor-pointer">
-    <img
-      src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
-      alt=""
-      class="h-36 block object-cover object-center w-full"
-    />
-    <div class="flex justify-between">
-      <div>Lorem, ipsum dolor.</div>
-      <div>2024</div>
-    </div>
-  </div>
-
-  <div class="max-w-sm space-y-4 flex-1 cursor-pointer">
-    <img
-      src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
-      alt=""
-      class="h-36 block object-cover object-center w-full"
-    />
-    <div class="flex justify-between">
-      <div>Lorem, ipsum dolor.</div>
-      <div>2024</div>
+    <div class="py-3 px-2 text-white">
+      <div class="flex justify-between items-center">
+        <div class="md:text-lg text-sm">{{ movies.title }}</div>
+        <button class="bg-white text-black rounded-sm font-medium text-[10px] px-1 py-1">
+          4/5
+        </button>
+      </div>
+      <div class="md:text-sm text-[10px] text-gray-100 pt-3">
+        {{ movies.trailer.published | date : "yyyy" }}
+      </div>
     </div>
   </div>
 </div>

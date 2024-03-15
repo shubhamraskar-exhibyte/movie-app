@@ -1,74 +1,69 @@
-<div class="">
-  <a class="text-lg inline" routerLink="/home">Home</a>
-  <div class="max-w-xl leading-loose space-y-4">
-    <div class="pt-28 pb-5">
-      <h1 class="text-6xl font-bold">WHEN THE MONSTERS RETURN </h1>
-    </div>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam,
-      beatae. Ea, pariatur? Nesciunt suscipit eum libero laudantium
-      exercitationem reprehenderit unde odit provident, laboriosam omnis et
-      at explicabo corrupti sed eligendi asperiores neque.
-    </p>
+<div class="h-full space-y-6">
+  <!-- heading / search bar -->
+  <div class="flex justify-between items-center md:pb-6 pb-2 md:pt-0">
+    <h1 class="md:text-3xl text-2xl font-bold tracking-wide">Browse</h1>
+    <input
+      type="text"
+      class="focus:outline-none md:py-2 md:px-4 py-1 px-2 bg-transparent border-2 rounded-full"
+      [(ngModel)]="searchTerm"
+      (input)="search()"
+    />
+  </div>
 
-    <div class="pt-6 space-y-2">
-      
-      <div class="text-xl">★★★★☆</div>
-      <div class="text-xl">4/5 stars rating</div>
-    </div>
-    <div class="flex space-x-3">
-      <button
-        class="border border-red-700 rounded-sm bg-red-700 px-4 py-2 hover:bg-transparent focus:outline-none uppercase"
-      >
-        Play now
-      </button>
-      <button
-        class="border border-gray-500 rounded-sm bg-gray-500 px-4 py-2 hover:bg-transparent focus:outline-none uppercase"
-      >
-        Trailer
-      </button>
-    </div>
-    <div class="pt-20 pb-5">
-      <ul class="flex space-x-6">
-        <li><a href="" class="active">Season 1</a></li>
-        <li><a href="">Season 2</a></li>
-        <li><a href="">Season 2</a></li>
-      </ul>
+  <!-- filter content -->
+  <div class="flex gap-3 flex-wrap">
+    <button
+      class="border rounded-full md:py-2 md:px-6 py-1 px-4 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:ring-offset-1"
+      (click)="filterMovie('all')"
+    >
+      All
+    </button>
+    <button
+      class="border rounded-full md:py-2 md:px-6 py-1 px-4 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:ring-offset-1"
+      (click)="filterMovie('movie')"
+    >
+      Movie
+    </button>
+    <button
+      class="border rounded-full md:py-2 md:px-6 py-1 px-4 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:ring-offset-1"
+      (click)="filterMovie('series')"
+    >
+      Series
+    </button>
+    <button
+      class="border rounded-full md:py-2 md:px-6 py-1 px-4 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:ring-offset-1"
+      (click)="filterMovie('anime')"
+    >
+      Anime
+    </button>
+  </div>
+
+  <!-- Movie Content || Movie cards -->
+  <div class="grid sm:grid-cols-4 grid-cols-2 gap-3">
+    <div
+      class="rounded-md space-y-2 bg-slate-950 overflow-hidden"
+      *ngFor="let item of filteredMovies"
+    >
+      <img
+        [src]="item.image"
+        alt=""
+        class="h-44 block object-cover object-center w-full"
+      />
+      <div class="py-3 px-2 text-white">
+        <div class="flex justify-between items-center">
+          <div class="md:text-lg text-sm">{{ item.title }}</div>
+          <button
+            class="bg-white text-black rounded-sm font-medium text-[10px] px-1 py-1"
+          >
+            {{ item.rating }}/10
+          </button>
+        </div>
+        <div class="md:text-sm text-[12px] text-gray-100 pt-3">{{ item.year }}</div>
+      </div>
     </div>
   </div>
-  <div class="flex space-x-6 overflow-auto">
-    <!-- selected class will add border red -->
-    <div class="flex flex-col space-y-3 border-red-500 border p-2">
-      <img
-        src="https://img.freepik.com/free-photo/snowy-mountain-peak-starry-galaxy-majesty-generative-ai_188544-9650.jpg"
-        alt=""
-        class="rounded-sm h-24"
-      />
-      <p><span>Episode 1: </span> Lorem, ipsum dolor.</p>
-    </div>
-    <div class="flex flex-col space-y-3 p-2">
-      <img
-        src="https://img.freepik.com/free-photo/snowy-mountain-peak-starry-galaxy-majesty-generative-ai_188544-9650.jpg"
-        alt=""
-        class="rounded-sm h-24"
-      />
-      <p><span>Episode 2: </span> Lorem, ipsum dolor.</p>
-    </div>
-    <div class="flex flex-col space-y-3 p-2">
-      <img
-        src="https://img.freepik.com/free-photo/snowy-mountain-peak-starry-galaxy-majesty-generative-ai_188544-9650.jpg"
-        alt=""
-        class="rounded-sm h-24"
-      />
-      <p><span>Episode 3: </span> Lorem, ipsum dolor.</p>
-    </div>
-    <div class="flex flex-col space-y-3 p-2">
-      <img
-        src="https://img.freepik.com/free-photo/snowy-mountain-peak-starry-galaxy-majesty-generative-ai_188544-9650.jpg"
-        alt=""
-        class="rounded-sm h-24"
-      />
-      <p><span>Episode 4: </span> Lorem, ipsum dolor.</p>
-    </div>
+
+  <div class="md:text-5xl text-2xl text-center py-36 font-bold" *ngIf="filteredMovies == 0">
+    Movie not found
   </div>
 </div>
